@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dead by Daylight Build Planner 2026 — Killer &amp; Survivor Perks</title>
+<meta name="description" content="Dead by Daylight Build Planner – create, compare and save Killer and Survivor perk builds offline on Windows. Search perk synergies and keep every loadout.">
+<meta name="keywords" content="Dead by Daylight builds, DBD build planner, killer builds, survivor builds, perk planner, perk synergies, DBD tools">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://falseparakeetcheer.github.io/dead-by-daylight-killer-build-planner-perk-tool/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dead by Daylight Build Planner">
+<meta property="og:title" content="Dead by Daylight Build Planner 2026 — Killer &amp; Survivor Perks">
+<meta property="og:description" content="Create, compare and save Killer and Survivor perk builds offline on Windows.">
+<meta property="og:url" content="https://falseparakeetcheer.github.io/dead-by-daylight-killer-build-planner-perk-tool/">
+<meta property="og:image" content="https://falseparakeetcheer.github.io/dead-by-daylight-killer-build-planner-perk-tool/assets/hero-forest.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dead by Daylight Build Planner 2026">
+<meta name="twitter:description" content="Killer builds, survivor builds, perk combinations and synergy search in one local planner.">
+<meta name="twitter:image" content="https://falseparakeetcheer.github.io/dead-by-daylight-killer-build-planner-perk-tool/assets/hero-forest.jpg">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2308080a'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23c1121f' stroke-width='3'/%3E%3Cpath d='M32 16v18a8 8 0 1 1-8 8' fill='none' stroke='%23e6a13c' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=Spectral:wght@200;300;400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dead by Daylight Build Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"1.0.0","description":"Offline desktop planner for Dead by Daylight Killer and Survivor perk builds, perk combinations and synergy search.","url":"https://falseparakeetcheer.github.io/dead-by-daylight-killer-build-planner-perk-tool/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"FalseParakeetCheer"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --void:#08080a; --void2:#0d0d10; --panel:#111114; --panel2:#16161a;
+  --bone:#f2ece1; --ash:#a39c92; --ash2:#6f6a63; --line:#232227;
+  --blood:#c1121f; --blood2:#e0353f; --ember:#e6a13c;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --body:"Spectral",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --r-sm:14px; --r-md:22px; --r-lg:30px; --r-xl:40px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--void);color:var(--bone);font-family:var(--body);
+  font-weight:300;font-size:17px;line-height:1.72;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(2.9rem,6.6vw,5.4rem)}
+h2{font-size:clamp(2rem,4vw,3.2rem)}
+h3{font-size:1.5rem;line-height:1.15}
+p{margin:0}
+.wrap{width:min(1180px,100% - 44px);margin-inline:auto}
+.mono{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase}
+.skip{position:absolute;left:-9999px;top:10px;background:var(--blood);color:#fff;padding:10px 20px;border-radius:999px;z-index:99;font-family:var(--mono);font-size:.75rem}
+.skip:focus{left:18px}
+:focus-visible{outline:2px solid var(--ember);outline-offset:4px;border-radius:6px}
+
+/* ---------- utility bar ---------- */
+.util{border-bottom:1px solid var(--line);background:#060607}
+.util-in{display:flex;justify-content:space-between;gap:16px;padding:9px 0;color:var(--ash2)}
+.util-in span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:40;background:rgba(8,8,10,.72);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.nav.stuck{border-color:var(--line);background:rgba(8,8,10,.94)}
+.nav-in{display:flex;align-items:center;gap:26px;padding:16px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.sigil{width:38px;height:38px;flex:0 0 auto}
+.brand b{font-family:var(--serif);font-size:1.28rem;font-weight:600;letter-spacing:.01em;line-height:1}
+.brand i{display:block;font-family:var(--mono);font-style:normal;font-size:.58rem;letter-spacing:.24em;color:var(--ash2);margin-top:5px}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);padding:9px 14px;border-radius:999px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--bone);background:rgba(242,236,225,.07)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;border-radius:999px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s,box-shadow .25s,background .25s,color .25s,border-color .25s}
+.btn:active{transform:translateY(1px)}
+.btn-outline{border:1px solid #3a3a40;color:var(--bone);padding:12px 22px;background:transparent}
+.btn-outline:hover{border-color:var(--bone);background:rgba(242,236,225,.06)}
+.btn-blood{background:linear-gradient(180deg,#d31a27,#a50f1a);color:#fff;padding:16px 30px;box-shadow:0 10px 26px -12px rgba(193,18,31,.9),inset 0 1px 0 rgba(255,255,255,.22)}
+.btn-blood:hover{background:linear-gradient(180deg,#e42431,#b6111d);box-shadow:0 16px 36px -12px rgba(225,40,52,.95),inset 0 1px 0 rgba(255,255,255,.3)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid #35353a;background:transparent;color:var(--bone);cursor:pointer;align-items:center;justify-content:center}
+.drawer{display:none;padding:8px 0 20px}
+.drawer.open{display:grid;gap:2px}
+.drawer a{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:14px 16px;border-radius:var(--r-sm);color:var(--ash)}
+.drawer a:hover{background:var(--panel2);color:var(--bone)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-photo{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;object-position:center 45%;opacity:.5;will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.72) 0%,rgba(8,8,10,.55) 40%,rgba(8,8,10,.94) 100%),radial-gradient(900px 420px at 78% 30%,rgba(193,18,31,.22),transparent 70%);pointer-events:none}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,60px);align-items:center;padding:clamp(56px,8vw,110px) 0 clamp(48px,6vw,86px)}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--ash);margin-bottom:26px}
+.kicker::before{content:"";width:46px;height:1px;background:var(--blood2);flex:0 0 auto}
+h1 .it{font-style:italic;color:var(--ember)}
+h1 .ln{display:block}
+.lead{margin-top:24px;max-width:46ch;color:#cfc7bb;font-size:1.06rem}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.cta .btn-blood{padding:18px 34px;font-size:.78rem}
+.metas{margin-top:34px;display:flex;flex-wrap:wrap;gap:22px;color:var(--ash2)}
+.metas span{display:flex;align-items:center;gap:8px}
+.metas i{width:5px;height:5px;border-radius:50%;background:var(--ember);display:block}
+
+/* loadout card */
+.card-loadout{
+  position:relative;border-radius:var(--r-xl);padding:24px;
+  background:linear-gradient(165deg,rgba(22,22,26,.92),rgba(12,12,14,.94));
+  border:1px solid #2b2b31;box-shadow:0 40px 80px -40px #000;
+  backdrop-filter:blur(14px);
+}
+.card-loadout .top{display:flex;justify-content:space-between;align-items:center;color:var(--ash2);padding-bottom:16px;border-bottom:1px solid #232327;margin-bottom:18px}
+.tokens{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.token{display:grid;justify-items:center;gap:9px;text-align:center}
+.disc{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 32% 28%,#2a2026,#141317);border:1px solid #3a2a2e}
+.disc::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(193,18,31,.35)}
+.disc svg{width:24px;height:24px;stroke:#e7b7b7;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.token b{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ash);font-weight:400;line-height:1.4}
+.card-loadout .score{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid #232327}
+.score .lbl{color:var(--ash2)}
+.score b{font-family:var(--serif);font-size:1.9rem;font-weight:600;color:var(--bone)}
+.score b small{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--ash2);margin-left:6px}
+.card-loadout .stamp{position:absolute;top:-18px;right:26px;padding:7px 16px;border-radius:999px;background:var(--blood);color:#fff;font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;box-shadow:0 8px 20px -8px rgba(193,18,31,.9)}
+
+/* perk strip */
+.strip{border-bottom:1px solid var(--line);background:#060607}
+.strip-in{display:flex;align-items:center;gap:clamp(14px,3vw,38px);padding:18px 0;overflow-x:auto;scrollbar-width:none}
+.strip-in::-webkit-scrollbar{display:none}
+.strip-in span{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ash2);white-space:nowrap;display:flex;align-items:center;gap:12px}
+.strip-in span::before{content:"";width:6px;height:6px;border-radius:50%;border:1px solid #4a4a50;display:block}
+
+/* ---------- sections ---------- */
+section{padding:clamp(56px,8vw,110px) 0}
+.sec-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(16px,4vw,54px);align-items:end;padding-bottom:clamp(26px,4vw,44px);border-bottom:1px solid var(--line);margin-bottom:clamp(20px,3vw,10px)}
+.sec-head .eyebrow{color:var(--ember);margin-bottom:16px}
+.sec-head p{color:var(--ash);max-width:48ch}
+
+/* editorial rows */
+.rows{border-top:1px solid transparent}
+.row{display:grid;grid-template-columns:56px 1fr .9fr 40px;gap:clamp(12px,3vw,34px);align-items:center;padding:26px 6px;border-bottom:1px solid var(--line);transition:background .25s,padding-left .25s}
+.row:hover{background:linear-gradient(90deg,rgba(193,18,31,.07),transparent 60%);padding-left:16px}
+.row .no{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--ash2);transition:color .25s}
+.row:hover .no{color:var(--blood2)}
+.row h3{font-size:clamp(1.4rem,2.4vw,1.85rem)}
+.row p{color:var(--ash);font-size:.94rem;max-width:44ch}
+.row .arw{width:34px;height:34px;border-radius:50%;border:1px solid #2e2e34;display:grid;place-items:center;color:var(--ash2);transition:transform .25s,border-color .25s,color .25s}
+.row:hover .arw{transform:translateX(4px);border-color:var(--blood);color:var(--bone)}
+
+/* synergy board */
+.board{position:relative;border-radius:var(--r-xl);border:1px solid #26262c;background:radial-gradient(700px 380px at 30% 20%,#191419,#0c0c0f 70%);padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:center;overflow:hidden}
+.board h2{margin-bottom:16px}
+.board ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px}
+.board li{display:grid;grid-template-columns:auto 1fr;gap:12px;color:#c6bdae;font-size:.95rem}
+.board li i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(230,161,60,.45);color:var(--ember);display:grid;place-content:center;font-style:normal;font-size:.62rem;font-family:var(--mono)}
+.web{position:relative;aspect-ratio:1;max-width:440px;margin-inline:auto;width:100%}
+.web svg{width:100%;height:100%;overflow:visible}
+.web .node{cursor:default;transition:opacity .3s}
+.web .ring{fill:#141317;stroke:#3b3b42;stroke-width:1}
+.web .core{fill:url(#coreG);stroke:#c1121f;stroke-width:1.5}
+.web text{font-family:var(--mono);font-size:9px;letter-spacing:.12em;fill:#a39c92;text-anchor:middle}
+.web .link{stroke:#4a3540;stroke-width:1;stroke-dasharray:3 5;opacity:.85}
+.raven-frame{position:absolute;right:-18px;bottom:-18px;width:132px;height:132px;border-radius:50%;overflow:hidden;border:1px solid #3a2a2e;box-shadow:0 20px 40px -20px #000}
+.raven-frame img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.1)}
+
+/* quote band */
+.quote{position:relative;overflow:hidden;border-block:1px solid var(--line);padding:clamp(60px,9vw,120px) 0;text-align:center}
+.quote img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;opacity:.34;will-change:transform}
+.quote::after{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 50% 50%,rgba(8,8,10,.55),rgba(8,8,10,.93))}
+.quote-in{position:relative;z-index:2;max-width:820px;margin-inline:auto}
+.quote blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.7rem,3.6vw,2.9rem);font-style:italic;font-weight:300;line-height:1.28;color:var(--bone)}
+.quote .mono{color:var(--ash2);margin-top:26px;display:block}
+
+/* download */
+.dl-wrap{padding:clamp(56px,8vw,110px) 0}
+.dl{
+  position:relative;border-radius:var(--r-xl);padding:clamp(28px,4.5vw,56px);
+  background:linear-gradient(170deg,#f4eee3,#e6ddcd);color:#141210;
+  box-shadow:0 40px 90px -40px #000;overflow:hidden;
+}
+.dl::before{content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;border:1px solid rgba(20,18,16,.12)}
+.dl::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(20,18,16,.14)}
+.dl-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:clamp(20px,4vw,48px);align-items:center}
+.dl .mono{color:#7b7267}
+.dl h2{margin:12px 0 14px;color:#12100e}
+.dl .sub{color:#5d554b;max-width:44ch;font-size:.98rem}
+.file-line{display:flex;align-items:center;gap:12px;margin-top:22px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:#2a2520}
+.file-line svg{width:20px;height:20px;stroke:#2a2520;fill:none;stroke-width:1.4}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:999px;border:1px solid rgba(20,18,16,.18);color:#4a433a;background:rgba(255,255,255,.32)}
+.pw{display:flex;align-items:center;gap:8px;margin-top:20px;padding:8px 8px 8px 18px;border-radius:999px;background:rgba(20,18,16,.06);border:1px solid rgba(20,18,16,.16);width:max-content;max-width:100%}
+.pw label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#6a6257}
+.pw code{font-family:var(--mono);font-size:1.1rem;letter-spacing:.16em;color:#141210}
+.pw button{border:0;cursor:pointer;border-radius:999px;padding:8px 15px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:#141210;color:#f4eee3;transition:background .2s}
+.pw button:hover{background:#c1121f}
+.pw button.done{background:#1f6b3a}
+.btn-dl{flex-direction:column;gap:8px;padding:26px 40px;font-size:.8rem;width:min(330px,100%);border-radius:32px;box-shadow:0 20px 44px -18px rgba(165,15,26,.75),inset 0 1px 0 rgba(255,255,255,.25);animation:breathe 4s ease-in-out infinite}
+.btn-dl .big{font-family:var(--serif);font-size:1.7rem;letter-spacing:0;text-transform:none;font-weight:600;line-height:1}
+.btn-dl .sub2{font-size:.6rem;letter-spacing:.2em;opacity:.85}
+@keyframes breathe{0%,100%{box-shadow:0 20px 44px -18px rgba(165,15,26,.7),inset 0 1px 0 rgba(255,255,255,.25)}50%{box-shadow:0 24px 60px -16px rgba(225,40,52,.85),inset 0 1px 0 rgba(255,255,255,.3)}}
+.btn-dl .spin{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;display:none;animation:sp .7s linear infinite}
+.btn-dl.loading .spin{display:block}
+.btn-dl.loading{animation:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.dl .fine{position:relative;z-index:2;margin-top:26px;padding-top:18px;border-top:1px solid rgba(20,18,16,.14);font-size:.76rem;color:#6a6257}
+
+/* faq */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);margin-top:8px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:24px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--serif);font-size:1.28rem;transition:color .2s,padding-left .25s}
+summary:hover{color:var(--ember);padding-left:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:26px;height:26px;flex:0 0 auto;border-radius:50%;border:1px solid #35353c;background:linear-gradient(var(--ash2),var(--ash2)) center/9px 1px no-repeat,linear-gradient(var(--ash2),var(--ash2)) center/1px 9px no-repeat;transition:transform .25s,border-color .25s}
+details[open] summary::after{transform:rotate(45deg);border-color:var(--blood2)}
+details p{padding:0 4px 26px;color:var(--ash);max-width:74ch;font-size:.96rem}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:48px 0 40px;background:#060607}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+.foot-links{display:flex;flex-wrap:wrap;gap:4px 8px}
+.foot-links a{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash2);padding:7px 12px;border-radius:999px}
+.foot-links a:hover{color:var(--bone);background:var(--panel2)}
+.seo{margin-top:26px;font-size:.78rem;color:#5d5952;max-width:96ch;line-height:1.8}
+.credit{margin-top:14px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:#4b4842;line-height:1.9}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .nav-links{display:none}
+  .burger{display:inline-flex}
+  .nav-in .btn-outline{display:none}
+  .hero-in{grid-template-columns:1fr;padding-top:clamp(40px,7vw,70px)}
+  .card-loadout{max-width:420px}
+  .sec-head{grid-template-columns:1fr;align-items:start}
+  .board{grid-template-columns:1fr}
+  .dl-in{grid-template-columns:1fr}
+  .btn-dl{width:100%}
+  .row{grid-template-columns:38px 1fr;gap:6px 18px;padding:24px 4px}
+  .row .no{grid-column:1;grid-row:1}
+  .row h3{grid-column:2;grid-row:1}
+  .row p{grid-column:2;grid-row:2;max-width:none}
+  .row .arw{display:none}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 32px)}
+  .util-in span:last-child{display:none}
+  .metas{gap:14px}
+  .tokens{gap:10px}
+  .disc{width:54px;height:54px}
+  .cta{flex-direction:column;align-items:stretch}
+  .cta .btn{width:100%}
+  .pw{width:100%;justify-content:space-between}
+  .btn-dl{padding:22px 20px}
+  .btn-dl .big{font-size:1.4rem}
+  .quote img{height:130%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .reveal{opacity:1;transform:none}
+  .hero-photo,.quote img{transform:none !important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="util">
+  <div class="wrap util-in mono">
+    <span>Case file 004 — perk archive</span>
+    <span>Windows 10 / 11 · v1.0.0</span>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-in">
+      <a class="brand" href="#top" aria-label="Dead by Daylight Build Planner — home">
+        <svg class="sigil" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" fill="none" stroke="#2f2f35"/>
+          <circle cx="20" cy="20" r="12" fill="none" stroke="#c1121f" stroke-width="1.4"/>
+          <path d="M20 6v14a6 6 0 1 1-6 6" fill="none" stroke="#e6a13c" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span><b>Perk Archive</b><i>Dead by Daylight builds</i></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#builds">Build types</a>
+        <a href="#synergy">Synergies</a>
+        <a href="#how">How it works</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-outline" href="#download">Get the planner</a>
+      <button class="burger" id="burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div class="drawer" id="drawer">
+      <a href="#builds">Build types</a>
+      <a href="#synergy">Synergies</a>
+      <a href="#how">How it works</a>
+      <a href="#download">Download</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <img class="hero-photo" id="heroPhoto" src="assets/hero-forest.jpg" alt="" width="1920" height="1280" fetchpriority="high">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div>
+        <p class="kicker mono">Dead by Daylight · Killer &amp; Survivor builds</p>
+        <h1>
+          <span class="ln">Plan the build.</span>
+          <span class="ln">Then take the <span class="it">trial.</span></span>
+        </h1>
+        <p class="lead">Four perk slots decide a match long before the offering is burned. Draft both sides, test perk combinations against each other and keep every loadout in one local archive.</p>
+        <div class="cta">
+          <a class="btn btn-blood" href="#download">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+            Download the planner
+          </a>
+          <a class="btn btn-outline" href="#builds">See build types</a>
+        </div>
+        <div class="metas mono">
+          <span><i aria-hidden="true"></i> 4 perks per loadout</span>
+          <span><i aria-hidden="true"></i> 120+ perks indexed</span>
+          <span><i aria-hidden="true"></i> Fully offline</span>
+        </div>
+      </div>
+
+      <aside class="card-loadout" aria-label="Example survivor loadout">
+        <span class="stamp mono">Loadout 03</span>
+        <div class="top mono"><span>Survivor · chase</span><span>4 / 4 slots</span></div>
+        <div class="tokens">
+          <div class="token">
+            <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><path d="M12 16v5"/><path d="M8 21h8"/></svg></span>
+            <b>Lithe</b>
+          </div>
+          <div class="token">
+            <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 13h16"/><path d="m9 8-5 5 5 5"/><path d="m15 8 5 5-5 5"/></svg></span>
+            <b>Windows</b>
+          </div>
+          <div class="token">
+            <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>
+            <b>Resilience</b>
+          </div>
+          <div class="token">
+            <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10z"/></svg></span>
+            <b>Adrenaline</b>
+          </div>
+        </div>
+        <div class="score">
+          <span class="lbl mono">Loop potential</span>
+          <b>86<small>/100</small></b>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip-in">
+      <span>Killer builds</span><span>Survivor builds</span><span>Perk combinations</span><span>Synergy search</span><span>Save &amp; export</span><span>Offline archive</span>
+    </div>
+  </div>
+
+  <section id="builds">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow mono">01 — Build types</p>
+          <h2>Two roles, one archive</h2>
+        </div>
+        <p>Killers and survivors are not planned the same way. The archive keeps separate sheets for both, so a killer draft never mixes its perk tiers with a survivor chase build.</p>
+      </div>
+      <div class="rows">
+        <article class="row reveal">
+          <span class="no">01</span>
+          <h3>Killer build creator</h3>
+          <p>Draft a four-perk killer loadout by role: chase, slowdown, information or a hybrid. The sheet refuses duplicate perks and reports the tier of every teachable.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">02</span>
+          <h3>Survivor builds</h3>
+          <p>Chase, stealth, support or generator pressure. Each survivor sheet carries its own loop notes and the exhaustion budget of the perks you picked.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">03</span>
+          <h3>Perk combinations</h3>
+          <p>Build a combination from the whole index and read what it costs: exhaustion conflicts, dead slots during a chase, perks that only trigger on unhook.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">04</span>
+          <h3>Synergy search</h3>
+          <p>Start from one perk and see the others that feed it. Search by effect, by role or by the perk that has to be carried alongside.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">05</span>
+          <h3>Saved builds</h3>
+          <p>Keep as many loadouts as you like, duplicate one for a variant and mark the versions you actually run in game.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">06</span>
+          <h3>Export</h3>
+          <p>Copy a build as plain text for a group chat, or keep the file and reopen it later on the same machine.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="synergy">
+    <div class="wrap">
+      <div class="board reveal">
+        <div>
+          <p class="eyebrow mono" style="color:var(--ember);margin-bottom:14px">02 — Synergy map</p>
+          <h2>One perk is a habit. Four are a plan.</h2>
+          <p style="color:var(--ash);margin-top:14px">Pick a perk and the map redraws around what actually supports it. Dependencies, exhaustion clashes and perks that quietly cancel each other show up before you commit a slot.</p>
+          <ul>
+            <li><i aria-hidden="true">✓</i><span>Effect search across every teachable perk</span></li>
+            <li><i aria-hidden="true">✓</i><span>Conflict warnings for shared cooldowns</span></li>
+            <li><i aria-hidden="true">✓</i><span>Role tags: chase, slowdown, info, support</span></li>
+          </ul>
+        </div>
+        <div class="web">
+          <svg viewBox="0 0 400 400" role="img" aria-label="Perk synergy graph with a central build node">
+            <defs>
+              <radialGradient id="coreG" cx="35%" cy="30%">
+                <stop offset="0" stop-color="#3a1a20"/><stop offset="1" stop-color="#170f13"/>
+              </radialGradient>
+            </defs>
+            <line class="link" x1="200" y1="200" x2="200" y2="66"/>
+            <line class="link" x1="200" y1="200" x2="322" y2="140"/>
+            <line class="link" x1="200" y1="200" x2="322" y2="266"/>
+            <line class="link" x1="200" y1="200" x2="200" y2="334"/>
+            <line class="link" x1="200" y1="200" x2="78" y2="266"/>
+            <line class="link" x1="200" y1="200" x2="78" y2="140"/>
+            <line class="link" x1="200" y1="66" x2="322" y2="140" opacity=".5"/>
+            <line class="link" x1="78" y1="266" x2="200" y2="334" opacity=".5"/>
+            <circle class="ring" cx="200" cy="200" r="148" opacity=".25"/>
+            <circle class="ring" cx="200" cy="200" r="104" opacity=".18"/>
+            <circle class="core" cx="200" cy="200" r="40"/>
+            <text x="200" y="197" style="fill:#f2ece1;font-size:11px;letter-spacing:.18em">BUILD</text>
+            <text x="200" y="212" style="fill:#e6a13c;font-size:8px;letter-spacing:.14em">4 SLOTS</text>
+            <g class="node"><circle class="ring" cx="200" cy="66" r="34"/><text x="200" y="70">SLOWDOWN</text></g>
+            <g class="node"><circle class="ring" cx="322" cy="140" r="30"/><text x="322" y="144">INFO</text></g>
+            <g class="node"><circle class="ring" cx="322" cy="266" r="30"/><text x="322" y="270">CHASE</text></g>
+            <g class="node"><circle class="ring" cx="200" cy="334" r="34"/><text x="200" y="338">ENDGAME</text></g>
+            <g class="node"><circle class="ring" cx="78" cy="266" r="30"/><text x="78" y="270">STEALTH</text></g>
+            <g class="node"><circle class="ring" cx="78" cy="140" r="30"/><text x="78" y="144">SUPPORT</text></g>
+          </svg>
+          <span class="raven-frame"><img src="assets/raven.jpg" alt="A raven perched on a branch" width="900" height="506" loading="lazy"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow mono">03 — Workflow</p>
+          <h2>Draft, compare, keep</h2>
+        </div>
+        <p>The planner mirrors how a build actually gets made: an idea, a test against what you already run, then a note you can find again next week.</p>
+      </div>
+      <div class="rows">
+        <article class="row reveal">
+          <span class="no">01</span>
+          <h3>Pick a side and a role</h3>
+          <p>Killer or survivor, then chase, slowdown, information, stealth or support. The sheet preloads the slots that role usually fills.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">02</span>
+          <h3>Fill four slots</h3>
+          <p>Add perks by name. Conflicts and duplicates are flagged in the same row, so a dead build never reaches the archive.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">03</span>
+          <h3>Compare against your old build</h3>
+          <p>Put the draft next to a saved loadout. Perk by perk, the sheet says what the swap gains and what it gives up.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+        <article class="row reveal">
+          <span class="no">04</span>
+          <h3>Save and export</h3>
+          <p>The build lands in your local library with a timestamp. Export it as text when someone asks what you are running.</p>
+          <span class="arw" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" aria-label="About the archive">
+    <img id="quotePhoto" src="assets/misty-path.jpg" alt="" width="1280" height="1920" loading="lazy">
+    <div class="wrap quote-in">
+      <blockquote>“A build is a promise you make to yourself before the fog closes in.”</blockquote>
+      <span class="mono">Local archive · no account · nothing leaves the machine</span>
+    </div>
+  </section>
+
+  <div class="dl-wrap" id="download">
+    <div class="wrap">
+      <div class="dl reveal">
+        <div class="dl-in">
+          <div>
+            <p class="mono">04 — Download</p>
+            <h2>Take the archive with you</h2>
+            <p class="sub">A single Windows build, unpacked with the password below. The library sits next to the app and travels with the folder.</p>
+            <div class="file-line">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+              <span>DeadByDaylightBuildPlanner.zip</span>
+            </div>
+            <div class="chips">
+              <span>Version 1.0.0</span><span>Windows 10 / 11</span><span>ZIP</span><span>Offline</span>
+            </div>
+            <div class="pw">
+              <label for="pw">Password</label>
+              <code id="pw">github</code>
+              <button id="copy" type="button" aria-label="Copy password">Copy</button>
+            </div>
+          </div>
+          <a class="btn btn-blood btn-dl" id="dl" href="files/DeadByDaylightBuildPlanner.zip" download="DeadByDaylightBuildPlanner.zip">
+            <span class="big">Download</span>
+            <span class="sub2">Windows build · 1.0.0</span>
+            <span class="spin" aria-hidden="true"></span>
+          </a>
+        </div>
+        <p class="fine">Unpack with the password above and run the app from the extracted folder. Builds are replaced between releases — take the file from this page rather than a copy.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow mono">05 — Questions</p>
+          <h2>Before you open it</h2>
+        </div>
+        <p>Short answers to what usually comes up first: does it touch the game, does it need an account, and where the builds are stored.</p>
+      </div>
+      <div class="faq">
+        <details class="reveal"><summary>Does the planner touch the game or my account?</summary><p>No. It is a standalone desktop app with its own local library. It does not read game memory, inject files, sign in to an account or send anything over the network.</p></details>
+        <details class="reveal"><summary>Do I need the game running?</summary><p>No. The planner works from the perk index it ships with, so you can draft a build with the game closed or not installed at all.</p></details>
+        <details class="reveal"><summary>Is the perk list complete?</summary><p>It covers the teachable perks available at the time of the release, with role tags and effect notes. Perks added after a chapter release arrive in the next build.</p></details>
+        <details class="reveal"><summary>Can I keep killer and survivor builds together?</summary><p>Yes, in the same library but on separate sheets. The archive filters by role, so a killer loadout never appears when you are drafting for a survivor.</p></details>
+        <details class="reveal"><summary>How does the synergy search work?</summary><p>You start from one perk and the map redraws around the perks that share its triggers, its effect type or its role. Conflicts are shown in a separate row rather than hidden behind a score.</p></details>
+        <details class="reveal"><summary>Where is the library stored?</summary><p>Inside the extracted folder next to the executable, with a timestamped backup before every save. Move the folder and the library moves with it.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <svg class="sigil" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" fill="none" stroke="#2f2f35"/>
+          <circle cx="20" cy="20" r="12" fill="none" stroke="#c1121f" stroke-width="1.4"/>
+          <path d="M20 6v14a6 6 0 1 1-6 6" fill="none" stroke="#e6a13c" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span><b>Perk Archive</b><i>© 2026 Dead by Daylight Build Planner</i></span>
+      </a>
+      <div class="foot-links">
+        <a href="#builds">Builds</a>
+        <a href="#synergy">Synergies</a>
+        <a href="#how">Workflow</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <p class="seo">Dead by Daylight build planner for Windows: draft killer builds and survivor builds, test perk combinations, search perk synergies and save every loadout in a local archive. A theorycrafting tool for Dead by Daylight players who plan before the trial starts.</p>
+    <p class="credit">Unofficial fan project. Not affiliated with the game's publisher or developers. Photography: foggy forest and raven (public domain), misty path (CC0) via Wikimedia Commons.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScroll(){
+    if (window.scrollY > 8) nav.classList.add('stuck');
+    else nav.classList.remove('stuck');
+    if (!reduce) {
+      var y = window.scrollY;
+      var hero = document.getElementById('heroPhoto');
+      var q = document.getElementById('quotePhoto');
+      if (hero && y < window.innerHeight * 1.4) hero.style.transform = 'translate3d(0,' + (y * 0.12).toFixed(1) + 'px,0)';
+      if (q) {
+        var rect = q.parentElement.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          q.style.transform = 'translate3d(0,' + ((rect.top - window.innerHeight) * 0.06).toFixed(1) + 'px,0)';
+        }
+      }
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  burger.addEventListener('click', function(){
+    var open = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  drawer.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') {
+      drawer.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  var copyBtn = document.getElementById('copy');
+  var pw = document.getElementById('pw');
+  if (copyBtn && pw) {
+    copyBtn.addEventListener('click', function(){
+      var text = pw.textContent.trim();
+      function done(){
+        copyBtn.textContent = 'Copied';
+        copyBtn.classList.add('done');
+        setTimeout(function(){ copyBtn.textContent = 'Copy'; copyBtn.classList.remove('done'); }, 1800);
+      }
+      function fallback(){
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly','');
+          ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta); done();
+        } catch(e){ pw.focus(); }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+  }
+
+  var dl = document.getElementById('dl');
+  if (dl) {
+    dl.addEventListener('click', function(ev){
+      if (dl.classList.contains('loading')) { ev.preventDefault(); return; }
+      var href = dl.getAttribute('href');
+      var name = dl.getAttribute('download');
+      dl.classList.add('loading');
+      dl.setAttribute('aria-busy','true');
+      setTimeout(function(){
+        var a = document.createElement('a');
+        a.href = href; a.download = name; a.rel = 'noopener';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        dl.classList.remove('loading');
+        dl.removeAttribute('aria-busy');
+      }, 500);
+    });
+  }
+
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
